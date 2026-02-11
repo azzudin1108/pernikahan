@@ -559,64 +559,64 @@
       form.addEventListener("submit", e => {
         e.preventDefault();
 
-      const formData = new FormData(form);
-      
-      if(localStorage.getItem("rsvp_sent")){
-        alert("Anda sudah mengirim RSVP");
-        return;}
+        const formData = new FormData(form);
         
-      if(formData.get("guest") === "0"){
-        alert("Silakan pilih jumlah tamu");
-        return;}
-
-      if(formData.get("presence") === "null"){
-        alert("Silakan konfirmasi kehadiran");
-        return;}
-
-      button.innerHTML = "Mengirim...";
-      button.disabled = true;
-
-      fetch(scriptURL, {
-        method: "POST",
-        body: formData
-      })
-      .then(response => {
-        alert("Terima kasih atas konfirmasi & doa nya 🤍");
-        localStorage.setItem("rsvp_sent","yes");
-        loadGuestbook();
-        form.reset();
-      })
-      .catch(error => {
-        alert("Gagal mengirim, coba lagi");
-      })
-      .finally(() => {
-        button.innerHTML = "Kirim Ucapan";
-        button.disabled = false;
-      });
-    });
-    </script>
-    <script>
-    const guestbook = document.getElementById("guestbook");
-    const API_URL = "https://script.google.com/macros/s/AKfycbzt2v9CmvpSK-RhufZoKwed73iMspv90h609GaaDKkPBUr9cvuCwbuU679Q9r21QeyGrw/exec"; // sama seperti scriptURL
-
-    function loadGuestbook(){
-      fetch(API_URL)
-      .then(res => res.json())
-      .then(data => {
-        guestbook.innerHTML = "";
-        data.forEach(item => {
-          const card = `<div class="p-4 rounded-lg border shadow-sm bg-white">
-          <div class="font-semibold">${item.nama}</div>
-          <div class="text-sm text-gray-500 mb-2">
-            ${item.kehadiran} • ${item.jumlah} Orang
-          </div>
-          <div>${item.ucapan}</div>
-        </div>`;
-        guestbook.innerHTML += card;
+        if(localStorage.getItem("rsvp_sent")){
+          alert("Anda sudah mengirim RSVP");
+          return;}
+          
+        if(formData.get("guest") === "0"){
+          alert("Silakan pilih jumlah tamu");
+          return;}
+  
+        if(formData.get("presence") === "null"){
+          alert("Silakan konfirmasi kehadiran");
+          return;}
+  
+        button.innerHTML = "Mengirim...";
+        button.disabled = true;
+  
+        fetch(scriptURL, {
+          method: "POST",
+          body: formData
+        })
+        .then(response => {
+          alert("Terima kasih atas konfirmasi & doa nya 🤍");
+          localStorage.setItem("rsvp_sent","yes");
+          loadGuestbook();
+          form.reset();
+        })
+        .catch(error => {
+          alert("Gagal mengirim, coba lagi");
+        })
+        .finally(() => {
+          button.innerHTML = "Kirim Ucapan";
+          button.disabled = false;
         });
       });
-    }
-    loadGuestbook();
+    </script>
+    <script>
+      const guestbook = document.getElementById("guestbook");
+      const API_URL = "https://script.google.com/macros/s/AKfycbzt2v9CmvpSK-RhufZoKwed73iMspv90h609GaaDKkPBUr9cvuCwbuU679Q9r21QeyGrw/exec";
+      
+      function loadGuestbook(){
+        fetch(API_URL)
+        .then(res => res.json())
+        .then(data => {
+          guestbook.innerHTML = "";
+          data.forEach(item => {
+            const card = `<div class="p-4 rounded-lg border shadow-sm bg-white">
+            <div class="font-semibold">${item.nama}</div>
+            <div class="text-sm text-gray-500 mb-2">
+              ${item.kehadiran} • ${item.jumlah} Orang
+            </div>
+            <div>${item.ucapan}</div>
+          </div>`;
+          guestbook.innerHTML += card;
+          });
+        });
+      }
+      loadGuestbook();
     </script>
   </body>
 </html>
