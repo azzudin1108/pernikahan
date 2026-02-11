@@ -552,75 +552,71 @@
     <script>function isMobile(){return/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)};AOS.init();let isPlay=false;history.scrollRestoration="manual";$(window).scrollTop(0);function getMessages(){$("#listMessages").html('');$.getJSON("https://api.goinvite.id/api/public/message/9DoqGO0sHQPdrekE",function(data){data.result.map((message,i)=>{$("#listMessages").append(`<div class="relative flex items-start space-x-3"><div class="relative"><span class="flex mx-auto mb-4 items-center justify-center h-12 w-12 rounded-full bg-gray-400"><span class="text-sm sm:text-base font-normal leading-none text-white">${message.name.length>0?message.name.substr(0,1):'-'}</span></span></div><div class="min-w-0 flex-1"><div><p class="font-color-four font-four text-sm font-bold">${message.name}</p></div><div class="mt-1 font-light font-color-four font-four text-sm"><p>${message.body}</p></div></div></div>`)})})};getMessages();$(document).on('click','a[href^="#"]',function(event){event.preventDefault();$('html, body').animate({scrollTop:$($.attr(this,'href')).offset().top},1000)});$(document).ready(function(){var countDownDate=new Date("2026-10-31 09:00:00".replace(/-/g,"/"));var x=setInterval(function(){var now=new Date();var distance=countDownDate-now;var days=Math.floor(distance/(1000*60*60*24));var hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));var minutes=Math.floor((distance%(1000*60*60))/(1000*60));var seconds=Math.floor((distance%(1000*60))/1000);if(!isNaN(distance)&&Number(seconds)>0){document.getElementById("countdownDay").innerHTML=String(days).padStart(2,'0');document.getElementById("countdownHour").innerHTML=String(hours).padStart(2,'0');document.getElementById("countdownMinute").innerHTML=String(minutes).padStart(2,'0');document.getElementById("countdownSecond").innerHTML=String(seconds).padStart(2,'0');document.getElementById("countdownDay2").innerHTML=String(days).padStart(2,'0');document.getElementById("countdownHour2").innerHTML=String(hours).padStart(2,'0');document.getElementById("countdownMinute2").innerHTML=String(minutes).padStart(2,'0');document.getElementById("countdownSecond2").innerHTML=String(seconds).padStart(2,'0')}},1000);var swiper=new Swiper(".memo-swiper",{centeredSlides:true,effect:"fade",autoplay:{delay:4500,disableOnInteraction:false,},});var clipboard=new ClipboardJS('.btn');clipboard.on('success',function(e){Toastify({text:"Berhasil disalin",duration:3000,gravity:"top",position:"right",style:{background:"rgb(15 15 15)",color:"#fff",fontSize:"12px"}}).showToast();e.clearSelection()});$('.swiper-kenburn .swiper-slide img').each(function(){var _this_transform_origin=$(this).data('transform-origin');if(_this_transform_origin!=undefined){$(this).css({'transform-origin':_this_transform_origin})}});$("#openEnvelope").click(function(){$("#envelope").addClass('close-envelope ');$(".decor-envelope").fadeOut();$("body").removeClass('stop-scrolling');$("#musicContainer").removeClass('hidden');document.getElementById('music').play();isPlay=true});$("#musicPlay").click(function(){$(this).addClass('hidden');$("#musicPause").removeClass('hidden');if(!isPlay){document.getElementById('music').play();isPlay=true}else{document.getElementById('music').muted=false}});$("#musicPause").click(function(){$(this).addClass('hidden');$("#musicPlay").removeClass('hidden');document.getElementById('music').muted=true});});</script>
     <script>var swiper=new Swiper(".mySwiper",{spaceBetween:10,slidesPerView:4,freeMode:true,watchSlidesProgress:true,});var swiper2=new Swiper(".mySwiper2",{autoplay:{delay:5000,},spaceBetween:10,navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev",},thumbs:{swiper:swiper,},on:{imagesReady:function(){window.lightGallery(document.getElementById("animated-thumbnails-gallery"),{autoplayFirstVideo:false,pager:false,galleryId:"nature",plugins:[lgZoom,lgThumbnail],mobileSettings:{controls:false,showCloseIcon:true,download:false,rotate:false}})},}});</script>
     <script>
-const scriptURL = "https://script.google.com/macros/s/AKfycbzt2v9CmvpSK-RhufZoKwed73iMspv90h609GaaDKkPBUr9cvuCwbuU679Q9r21QeyGrw/exec";
-const form = document.getElementById("formSendMessage");
-const button = form.querySelector("button");
+      const scriptURL = "https://script.google.com/macros/s/AKfycbzt2v9CmvpSK-RhufZoKwed73iMspv90h609GaaDKkPBUr9cvuCwbuU679Q9r21QeyGrw/exec";
+      const form = document.getElementById("formSendMessage");
+      const button = form.querySelector("button");
 
-form.addEventListener("submit", e => {
-  e.preventDefault();
+      form.addEventListener("submit", e => {
+        e.preventDefault();
 
-  const formData = new FormData(form);
-  if(localStorage.getItem("rsvp_sent")){
-  alert("Anda sudah mengirim RSVP");
-  return;
-  }
-  if(formData.get("guest") === "0"){
-    alert("Silakan pilih jumlah tamu");
-    return;
-  }
+      const formData = new FormData(form);
+      
+      if(localStorage.getItem("rsvp_sent")){
+        alert("Anda sudah mengirim RSVP");
+        return;}
+        
+      if(formData.get("guest") === "0"){
+        alert("Silakan pilih jumlah tamu");
+        return;}
 
-  if(formData.get("presence") === "null"){
-    alert("Silakan konfirmasi kehadiran");
-    return;
-  }
+      if(formData.get("presence") === "null"){
+        alert("Silakan konfirmasi kehadiran");
+        return;}
 
-  button.innerHTML = "Mengirim...";
-  button.disabled = true;
+      button.innerHTML = "Mengirim...";
+      button.disabled = true;
 
-  fetch(scriptURL, {
-    method: "POST",
-    body: formData
-  })
-  .then(response => {
-    alert("Terima kasih atas konfirmasi & doa nya 🤍");
-    localStorage.setItem("rsvp_sent","yes");
-    loadGuestbook();
-    form.reset();
-  })
-  .catch(error => {
-    alert("Gagal mengirim, coba lagi");
-  })
-  .finally(() => {
-    button.innerHTML = "Kirim Ucapan";
-    button.disabled = false;
-  });
-});
-</script>
-<script>
-const guestbook = document.getElementById("guestbook");
-const API_URL = "https://script.google.com/macros/s/AKfycbzt2v9CmvpSK-RhufZoKwed73iMspv90h609GaaDKkPBUr9cvuCwbuU679Q9r21QeyGrw/exec"; // sama seperti scriptURL
+      fetch(scriptURL, {
+        method: "POST",
+        body: formData
+      })
+      .then(response => {
+        alert("Terima kasih atas konfirmasi & doa nya 🤍");
+        localStorage.setItem("rsvp_sent","yes");
+        loadGuestbook();
+        form.reset();
+      })
+      .catch(error => {
+        alert("Gagal mengirim, coba lagi");
+      })
+      .finally(() => {
+        button.innerHTML = "Kirim Ucapan";
+        button.disabled = false;
+      });
+    });
+    </script>
+    <script>
+    const guestbook = document.getElementById("guestbook");
+    const API_URL = "https://script.google.com/macros/s/AKfycbzt2v9CmvpSK-RhufZoKwed73iMspv90h609GaaDKkPBUr9cvuCwbuU679Q9r21QeyGrw/exec"; // sama seperti scriptURL
 
-function loadGuestbook(){
-  fetch(API_URL)
-  .then(res => res.json())
-  .then(data => {
-    guestbook.innerHTML = "";
-
-    data.forEach(item => {
-      const card = `
-        <div class="p-4 rounded-lg border shadow-sm bg-white">
+    function loadGuestbook(){
+      fetch(API_URL)
+      .then(res => res.json())
+      .then(data => {
+        guestbook.innerHTML = "";
+        data.forEach(item => {
+          const card = `<div class="p-4 rounded-lg border shadow-sm bg-white">
           <div class="font-semibold">${item.nama}</div>
           <div class="text-sm text-gray-500 mb-2">
             ${item.kehadiran} • ${item.jumlah} Orang
           </div>
           <div>${item.ucapan}</div>
-        </div>
-      `;
-      guestbook.innerHTML += card;
-    });
-  });
-}
-loadGuestbook();
-</script>
+        </div>`;
+        guestbook.innerHTML += card;
+        });
+      });
+    }
+    loadGuestbook();
+    </script>
   </body>
 </html>
