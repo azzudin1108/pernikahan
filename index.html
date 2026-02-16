@@ -285,10 +285,10 @@
                       <h4 class=" font-one text-4xl pb-4 " data-aos="fade-up" data-aos-duration="800">Akad Nikah</h4>
                       <p class="font-four text-sm font-bold" data-aos="fade-up" data-aos-duration="800">Sabtu, 31 Oktober 2026</p>
                       <p class="font-four text-sm" data-aos="fade-up" data-aos-duration="800">09.00 - 10.00</p>
-                      <p class="font-four text-sm italic" data-aos="fade-up" data-aos-duration="800">Pule RT. 01 RW. 10, Gedong, Pracimantoro, Wonogiri, Jawa Tengah</p>
+                      <p class="font-four text-sm italic" data-aos="fade-up" data-aos-duration="800"id="alamatAkad">Pule RT. 01 RW. 10, Gedong, Pracimantoro, Wonogiri, Jawa Tengah</p>
                     </div>
                   </div>
-                  <a target="_blank" data-aos="fade-up" data-aos-duration="800" href="https://www.google.com/maps/search/?api=1&query=-8.0688398948291,%20110.79889073968" class="font-three m-auto flex py-2 px-8 rounded mt-4 mb-8 w-fit bg-color-one font-color-three ">
+                  <a id="linkMapsAkad" target="_blank" data-aos="fade-up" data-aos-duration="800" href="https://www.google.com/maps/search/?api=1&query=-8.0688398948291,%20110.79889073968" class="font-three m-auto flex py-2 px-8 rounded mt-4 mb-8 w-fit bg-color-one font-color-three ">
                     <ion-icon class=" w-6 h-6 mr-2" name="location-outline"></ion-icon>
                     <span>Lihat Lokasi</span>
                   </a>
@@ -303,10 +303,10 @@
                       <h4 class=" font-one text-4xl pb-4 " data-aos="fade-up" data-aos-duration="800">Resepsi</h4>
                       <p class="font-four text-sm font-bold" data-aos="fade-up" data-aos-duration="800">Sabtu, 31 Oktober 2026</p>
                       <p class="font-four text-sm" data-aos="fade-up" data-aos-duration="800">10.00 - Selesai</p> 
-                      <p class="font-four text-sm italic" data-aos="fade-up" data-aos-duration="800">Pule RT. 01 RW. 10, Gedong, Pracimantoro, Wonogiri, Jawa Tengah</p>
+                      <p class="font-four text-sm italic" data-aos="fade-up" data-aos-duration="800"id="alamatResepsi">Pule RT. 01 RW. 10, Gedong, Pracimantoro, Wonogiri, Jawa Tengah</p>
                     </div>
                   </div>
-                  <a target="_blank" data-aos="fade-up" data-aos-duration="800" href="https://www.google.com/maps/search/?api=1&query=-8.0688256206804,%20110.7988904044" class="font-three m-auto flex py-2 px-8 rounded mt-4 mb-8 w-fit bg-color-one font-color-three ">
+                  <a id="linkMapsResepsi" target="_blank" data-aos="fade-up" data-aos-duration="800" href="https://www.google.com/maps/search/?api=1&query=-8.0688256206804,%20110.7988904044" class="font-three m-auto flex py-2 px-8 rounded mt-4 mb-8 w-fit bg-color-one font-color-three ">
                     <ion-icon class=" w-6 h-6 mr-2" name="location-outline"></ion-icon>
                     <span>Lihat Lokasi</span></a>
                   </div>
@@ -340,7 +340,7 @@
                   <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
                     <div class="swiper-wrapper" id="animated-thumbnails-gallery">
                       <a class="swiper-slide gallery-item" data-src="https://diginvikreasi.b-cdn.net/goinvite/1770609429-7FF368EA-51BC-2447-29F0-77CB7B1623DB.jpg">
-                        <img alt="" class="object-scale-down w-full h-48 lg:h-80 img-responsive" src="images/1770609429-7FF368EA-51BC-2447-29F0-77CB7B1623DB.jpg">
+                        <img alt="" class="object-scale-down w-full h-48 lg:h-80 img-responsive bg-transparent" src="images/1770609429-7FF368EA-51BC-2447-29F0-77CB7B1623DB.jpg">
                       </a>
                       <a class="swiper-slide gallery-item" data-src="https://diginvikreasi.b-cdn.net/goinvite/1770609429-141B5327-CC57-B409-1EE3-FA410483132E.jpg">
                         <img alt="" class="object-scale-down w-full h-48 lg:h-80 img-responsive" src="images/1770609429-141B5327-CC57-B409-1EE3-FA410483132E.jpg">
@@ -544,6 +544,35 @@
       if (alamat) {
         document.getElementById("alamatTamu").innerText = alamat.replace(/\+/g, " ");}
     </script>
+    <script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const pengundang = urlParams.get("dari");
+
+  const dataUndangan = {
+    azis: {
+      alamat: "Galo RT. 02 RW. 08, Gambirmanis, Pracimantoro, Wonogiri, Jawa Tengah",
+      maps: "https://maps.app.goo.gl/XE81jHXUHw6KvJLc9"
+    },
+    puput: {
+      alamat: "Pule RT. 01 RW. 10, Gedong, Pracimantoro, Wonogiri, Jawa Tengah",
+      maps: "https://www.google.com/maps/search/?api=1&query=-8.0688398948291,110.79889073968"
+    }
+  };
+
+  if (pengundang && dataUndangan[pengundang.toLowerCase()]) {
+    const data = dataUndangan[pengundang.toLowerCase()];
+
+    document.getElementById("alamatAkad").textContent = data.alamat;
+    document.getElementById("linkMapsAkad").href = data.maps;
+
+    // kalau resepsi sama
+    const alamatResepsi = document.getElementById("alamatResepsi");
+    const linkMapsResepsi = document.getElementById("linkMapsResepsi");
+
+    if (alamatResepsi) alamatResepsi.textContent = data.alamat;
+    if (linkMapsResepsi) linkMapsResepsi.href = data.maps;
+  }
+</script>
     <script>
       const urlParams = new URLSearchParams(window.location.search);
       const invitedName = urlParams.get("to");
