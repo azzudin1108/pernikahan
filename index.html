@@ -545,34 +545,34 @@
         document.getElementById("alamatTamu").innerText = alamat.replace(/\+/g, " ");}
     </script>
     <script>
-  const urlParams = new URLSearchParams(window.location.search);
-  const pengundang = urlParams.get("dari");
-
-  const dataUndangan = {
-    azis: {
-      alamat: "Galo RT. 02 RW. 08, Gambirmanis, Pracimantoro, Wonogiri, Jawa Tengah",
-      maps: "https://maps.app.goo.gl/XE81jHXUHw6KvJLc9"
-    },
-    puput: {
-      alamat: "Pule RT. 01 RW. 10, Gedong, Pracimantoro, Wonogiri, Jawa Tengah",
-      maps: "https://www.google.com/maps/search/?api=1&query=-8.0688398948291,110.79889073968"
-    }
-  };
-
-  if (pengundang && dataUndangan[pengundang.toLowerCase()]) {
-    const data = dataUndangan[pengundang.toLowerCase()];
-
-    document.getElementById("alamatAkad").textContent = data.alamat;
-    document.getElementById("linkMapsAkad").href = data.maps;
-
-    // kalau resepsi sama
-    const alamatResepsi = document.getElementById("alamatResepsi");
-    const linkMapsResepsi = document.getElementById("linkMapsResepsi");
-
-    if (alamatResepsi) alamatResepsi.textContent = data.alamat;
-    if (linkMapsResepsi) linkMapsResepsi.href = data.maps;
-  }
-</script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const pengundang = urlParams.get("dari");
+    
+      const dataUndangan = {
+        azis: {
+          alamat: "Galo RT. 02 RW. 08, Gambirmanis, Pracimantoro, Wonogiri, Jawa Tengah",
+          maps: "https://maps.app.goo.gl/XE81jHXUHw6KvJLc9"
+        },
+        puput: {
+          alamat: "Pule RT. 01 RW. 10, Gedong, Pracimantoro, Wonogiri, Jawa Tengah",
+          maps: "https://www.google.com/maps/search/?api=1&query=-8.0688398948291,110.79889073968"
+        }
+      };
+    
+      if (pengundang && dataUndangan[pengundang.toLowerCase()]) {
+        const data = dataUndangan[pengundang.toLowerCase()];
+    
+        document.getElementById("alamatAkad").textContent = data.alamat;
+        document.getElementById("linkMapsAkad").href = data.maps;
+    
+        // kalau resepsi sama
+        const alamatResepsi = document.getElementById("alamatResepsi");
+        const linkMapsResepsi = document.getElementById("linkMapsResepsi");
+    
+        if (alamatResepsi) alamatResepsi.textContent = data.alamat;
+        if (linkMapsResepsi) linkMapsResepsi.href = data.maps;
+      }
+    </script>
     <script>
       const urlParams = new URLSearchParams(window.location.search);
       const invitedName = urlParams.get("to");
