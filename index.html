@@ -380,7 +380,7 @@
                 </div>
               </div>
             </div>
-          <div class="relative bg-color">
+<!--          <div class="relative bg-color">
             <div class="absolute top-0 right-0">
               <img src="images/main-0.webp"></div>
               <div class="absolute bottom-0 left-0">
@@ -420,28 +420,28 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <div id="pageGuestbook">
-                <div class="bg-color-two relative">
+                <div class="bg-color relative">
                   <svg data-src="https://api.goinvite.id/public/assets/images/themes/template-32/top.svg" width="100%" fill="#7c8776" class="absolute bottom-0"></svg>
                   <div class="md:px-24 px-6 py-8">
                     <div class=" py-16 " data-aos="fade-up" data-aos-duration="800">
                       <div class="text-center">
                         <h2 class=" bg-color-one text-center font-two font-color-three mb-8 text-xl py-2 px-8 inline-block rounded-md" data-aos="fade-up" data-aos-duration="800">Buku Tamu</h2>
                       </div>
-                      <p class=" text-center font-four font-color-three mb-12">Tulis ucapan dan doa Anda di sini karena kami sangat bersemangat untuk memulai perjalanan baru ini bersama-sama</p>
-                      <div class="w-full inline-block align-bottom bg-white p-4 rounded text-left overflow-hiddentransform transition-all">
+                      <p class=" text-center font-four font-color-four mb-12">Tulis ucapan dan doa Anda di sini karena kami sangat bersemangat untuk memulai perjalanan baru ini bersama-sama</p>
+                      <div class="w-full inline-block align-bottom bg-color-one p-4 rounded text-left overflow-hiddentransform transition-all">
                         <form id="formSendMessage">
                           <div>
                             <div class=" text-center ">
-                              <div class="mt-2 space-y-4 grid grid-cols-1">
+                              <div class=" mt-2 space-y-4 grid grid-cols-1">
                                 <div class="text-left">
                                 <div>
-                                  <input placeholder="Nama" type="text" name="name" readonly class="p-2 rounded-md text-sm block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-color-one-opacity" value="" tabindex="0" required=""></div>
+                                  <input placeholder="Nama" type="text" name="name" readonly class="p-2 rounded-md text-sm block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-color-one-opacity bg-color font-color-four" value="" tabindex="0" required=""></div>
                                 </div>
                                 <div class="text-left">
                                   <div class="mt-1">
-                                    <select required="" name="guest" class="p-2 rounded-md w-full block focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border border-color-one-opacity">
+                                    <select required="" name="guest" class="p-2 rounded-md w-full block focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border border-color-one-opacity bg-color font-color-four">
                                     <option value="0">Jumlah Orang</option>
                                     <option value="1">1 Orang</option>
                                     <option value="2">2 Orang</option>
@@ -451,7 +451,7 @@
                               </div>
                               <div class="text-left">
                                 <div class="mt-1">
-                                  <select required="" name="presence" class="p-2 rounded-md w-full block focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border border-color-one-opacity">
+                                  <select required="" name="presence" class="p-2 rounded-md w-full block focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border border-color-one-opacity bg-color font-color-four">
                                     <option value="null">Konfirmasi Kehadiran Anda</option>
                                     <option value="Hadir">Ya, Saya akan hadir</option>
                                     <option value="Tidak Hadir">Tidak</option>
@@ -460,14 +460,14 @@
                               </div>
                               <div class="text-left">
                                 <div class="mt-1">
-                                  <textarea placeholder="Berikan Ucapan & Doa" required="" name="body" rows="8" class="p-2 rounded-md text-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 border border-color-one-opacity"></textarea>
+                                  <textarea placeholder="Berikan Ucapan & Doa" required="" name="body" rows="8" class="p-2 rounded-md text-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 border border-color-one-opacity bg-color font-color-four"></textarea>
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
                         <div class="mt-5 text-right">
-                          <button type="submit" class="text-sm font-three font-color-three inline-flex justify-center rounded-md bg-color-one border border-transparent px-8 py-2 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 ">Kirim Ucapan</button>
+                          <button type="submit" class="text-sm font-three font-color-one inline-flex justify-center rounded-md bg-color border border-transparent px-8 py-2 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 font-color-four">Kirim Ucapan</button>
                         </div>
                       </form>
                       <div id="guestbook" class="mt-10 space-y-4"></div>
@@ -657,12 +657,12 @@
         .then(data => {
           guestbook.innerHTML = "";
           data.forEach(item => {
-            const card = `<div class="p-4 rounded-lg border shadow-sm bg-white">
+            const card = `<div class="p-4 rounded-lg border shadow-sm bg-color">
             <div class="font-semibold">${item.nama}</div>
             <div class="text-sm text-gray-500 mb-2">
               ${item.kehadiran} • ${item.jumlah} Orang
             </div>
-            <div>${item.ucapan}</div>
+            <div class="font-color-four">${item.ucapan}</div>
           </div>`;
           guestbook.innerHTML += card;
           });
