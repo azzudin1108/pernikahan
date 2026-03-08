@@ -541,9 +541,12 @@
       const nama = params.get("to");
       const alamat = params.get("address");
       if (nama) {
-        document.getElementById("namaTamu").innerText = nama.replace(/\+/g, " ");}
+        document.getElementById("namaTamu").innerText = nama.replace(/\+/g, " ");
+        document.querySelector('input[name="name"]').value = decodeURIComponent(nama.replace(/\+/g," "));
+      }
       if (alamat) {
-        document.getElementById("alamatTamu").innerText = alamat.replace(/\+/g, " ");}
+        document.getElementById("alamatTamu").innerText = alamat.replace(/\+/g, " ");
+      }
     </script>
     <script>
       const urlParams = new URLSearchParams(window.location.search);
