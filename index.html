@@ -578,7 +578,7 @@
       const urlParams = new URLSearchParams(window.location.search);
       const invitedName = urlParams.get("to");
       if(invitedName){
-    document.getElementById("namaSender").value = decodeURIComponent(invitedName.replace(/\+/g," "));
+    document.getElementById("namaSender").value = invitedName.replace(/\+/g," ");
     document.getElementById("namaSender").placeholder = decodeURIComponent(invitedName.replace(/\+/g," "));
       }
     </script>
